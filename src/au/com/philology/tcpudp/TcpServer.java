@@ -75,7 +75,10 @@ public class TcpServer extends BasicNet implements IServerTCP
                     ex);
         }
 
-        for (CommunicationThread thread : this.allCommunicationThreads)
+        ArrayList<CommunicationThread> tmpThreads = new ArrayList<>();
+        tmpThreads.addAll(this.allCommunicationThreads);
+        
+        for (CommunicationThread thread : tmpThreads)
         {
             try
             {
@@ -93,6 +96,8 @@ public class TcpServer extends BasicNet implements IServerTCP
                         null, ex);
             }
         }
+        
+        tmpThreads.clear();
 
         if (this.theServerDelegate != null)
         {
