@@ -17,6 +17,7 @@ public class JavaTheme
     public final static String LOOKANDFEEL_SYSTEM = "System";
     public final static String LOOKANDFEEL_MOTIF = "Motif";
     public final static String LOOKANDFEEL_GTK = "GTK";
+    public final static String LOOKANDFEEL_NIBUM = "Nibum";
 
     public static void setLookAndFeel(String lookandfeel)
     {
@@ -38,6 +39,9 @@ public class JavaTheme
         } else if (lookandfeel.equals("GTK"))
         {
             result = "com.sun.java.swing.plaf.gtk.GTKLookAndFeel";
+        } else if (lookandfeel.equals("Nibum"))
+        {
+            result = "javax.swing.plaf.nimbus.NimbusLookAndFeel";
         } else
         {
             System.err.println("Unexpected value of LOOKANDFEEL specified: "

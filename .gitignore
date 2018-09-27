@@ -1,0 +1,8 @@
+/nbproject/private/
+/build/
+/dist/
+.idea
+nbproject
+build.xml
+javacommon.iml
+manifest.mf
