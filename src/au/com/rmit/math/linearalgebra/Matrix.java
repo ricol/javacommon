@@ -273,9 +273,125 @@ public class Matrix
         return true;
     }
 
+    public Matrix getCopy()
+    {
+        Matrix m = new Matrix(rows, columns);
+        for (int r = 0; r < rows; r++)
+        {
+            for (int c = 0; c < columns; c++)
+            {
+                m.update(r, c, data[r][c]);
+            }
+        }
+        return m;
+    }
+
     public boolean row_operate_add(int from, int to)
     {
         return this.row_operate_add(from, to, 1);
+    }
+
+    public Matrix getNormalizeMatrix()
+    {
+        Matrix m = this.getCopy();
+
+        for (int r = 0; r < rows; r++)
+        {
+            for (int c = 0; c < columns; c++)
+            {
+                double value = data[r][c];
+                if (value == 0) continue;
+                if (value == 1) break;
+                for (int column = c; column < columns; column++)
+                {
+                    double oldValue = m.getValue(r, column);
+                    m.update(r, column, oldValue / value);
+                }
+                break;
+            }
+        }
+
+        m.all_rows_minus_row(0);
+
+        return m;
+    }
+    
+    public Matrix getFullNormalizationMatrix()
+    {
+        Matrix m = this.getCopy();
+        
+        Matrix t = m.getNormalizeMatrix();
+        Matrix sub = t.getSubMatrix(1, 1, rows - 1, columns - 1);
+        
+        return m;
+    }
+    
+    private int getFirstNonZeroColumnForRow(int row)
+    {
+        int column = -1;
+        for (int c = 0; c < columns; c++)
+        {
+            if (data[row][c] == 0)
+            {
+                column += 1;
+            } else
+            {
+                break;
+            }
+        }
+        return column;
+    }
+
+    private void all_rows_minus_row(int row)
+    {
+        int start_from_column = this.getFirstNonZeroColumnForRow(row);
+        for (int r = 0; r < rows; r++)
+        {
+            if (r == row) continue;
+            if (this.getFirstNonZeroColumnForRow(r) < start_from_column) continue;
+            this.row_operate_add(row, r, -1);
+        }
+    }
+
+    public Matrix getSubMatrix(int from_row, int to_row, int from_column, int to_column)
+    {
+        int m_rows = to_row - from_row + 1;
+        int m_columns = to_column - from_column + 1;
+        if (m_rows < 0 || m_columns < 0) return null;
+
+        Matrix m = new Matrix(m_rows, m_columns);
+
+        int m_r = 0, m_c = 0;
+        for (int r = from_row; r <= to_row; r++)
+        {
+            for (int c = from_column; c <= to_column; c++)
+            {
+                m.update(m_r, m_c, data[r][c]);
+                m_c += 1;
+            }
+            m_r += 1;
+        }
+
+        return m;
+    }
+    
+    public boolean updateSubMatrix(int from_row, int from_column, Matrix m)
+    {
+        int to_row = from_row + m.rows;
+        int to_column = from_column + m.columns;
+        if (to_row >= rows || to_column >= columns) return false;
+
+        int m_r = 0, m_c = 0;
+        for (int r = from_row; r <= to_row; r++)
+        {
+            for (int c = from_column; c <= to_column; c++)
+            {
+                data[r][c] = m.getValue(m_r, m_c);
+                m_c += 1;
+            }
+            m_r += 1;
+        }
+        return true;
     }
 }
 
@@ -320,5 +436,12 @@ class JavaMain
         System.out.println("Swaping " + i + " with " + j);
         m.row_operate_swap(i, j);
         m.show();
+
+        System.out.println("Demo normalization...");
+        m = new Matrix(rows, columns, true);
+        m.show();
+        m.getSubMatrix(0, 1, 0, 0).show();
+//        System.out.println("Normalizing...");
+//        m.getFullNormalizationMatrix().show();
     }
 }
