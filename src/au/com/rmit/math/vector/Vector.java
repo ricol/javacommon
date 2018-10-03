@@ -144,7 +144,7 @@ public class Vector
     public boolean isPerpendicularTo(Vector B)
     {
         double dot = this.dotProduct(B);
-        return abs(dot) <= MathConsts.E;
+        return abs(dot) <= MathConsts.Minimum;
     }
 
     public boolean isParalleTo(Vector B)
@@ -153,7 +153,7 @@ public class Vector
         double absThis = this.getTheMagnitude();
         double absB = B.getTheMagnitude();
 
-        return abs((abs(dot) - abs(absThis * absB))) <= MathConsts.E;
+        return abs((abs(dot) - abs(absThis * absB))) <= MathConsts.Minimum;
     }
 
     @Override
@@ -281,7 +281,7 @@ public class Vector
         double b = UNIT_THIS.y;
         double cos = Math.cos(angle);
 
-        if (abs(a) > MathConsts.E)
+        if (abs(a) > MathConsts.Minimum)
         {
             double A = a * a + b * b;
             double B = -2 * b * cos;
@@ -296,7 +296,7 @@ public class Vector
             x1 = (cos - b * y1) / a;
             UNIT_TARGET = new Vector(x1, y1);
             results.add(UNIT_TARGET.multiplyNumber(this.getTheMagnitude()));
-        } else if (abs(b) > MathConsts.E)
+        } else if (abs(b) > MathConsts.Minimum)
         {
             double A = a * a + b * b;
             double B = -2 * a * cos;

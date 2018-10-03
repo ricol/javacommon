@@ -57,7 +57,7 @@ public class Point extends Shape
         if (obj instanceof Point)
         {
             Point B = (Point) obj;
-            return abs(this.x - B.x) <= MathConsts.E && abs(this.y - B.y) <= MathConsts.E;
+            return abs(this.x - B.x) <= MathConsts.Minimum && abs(this.y - B.y) <= MathConsts.Minimum;
         } else
         {
             return false;

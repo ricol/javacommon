@@ -5,6 +5,7 @@
  */
 package au.com.rmit.math.linearalgebra;
 
+import au.com.rmit.math.common.MathConsts;
 import java.util.Random;
 
 /**
@@ -47,15 +48,15 @@ public class Matrix
 
     private double[][] buildMatrix(int rows, int columns, boolean random)
     {
-        double[][] data = new double[rows][columns];
+        double[][] m = new double[rows][columns];
         for (int r = 0; r < rows; r++)
         {
             for (int c = 0; c < columns; c++)
             {
-                data[r][c] = random ? theRandom.nextDouble() : 0;
+                m[r][c] = random ? theRandom.nextDouble() : 0;
             }
         }
-        return data;
+        return m;
     }
 
     public boolean isSquare()
@@ -223,6 +224,59 @@ public class Matrix
 
         return true;
     }
+
+    // basic row operation
+    public boolean row_operate_swap(int i, int j)
+    {
+        if (i >= rows || j >= rows)
+        {
+            return false;
+        }
+
+        for (int c = 0; c < columns; c++)
+        {
+            double tmp = data[i][c];
+            data[i][c] = data[j][c];
+            data[j][c] = tmp;
+        }
+
+        return true;
+    }
+
+    public boolean row_operate_multiply(int row, double num)
+    {
+        if (Math.abs(num) < MathConsts.Minimum || row >= rows)
+        {
+            return false;
+        }
+
+        for (int c = 0; c < columns; c++)
+        {
+            data[row][c] *= num;
+        }
+
+        return true;
+    }
+
+    public boolean row_operate_add(int from, int to, double num)
+    {
+        if (Math.abs(num) < MathConsts.Minimum || from >= rows || to >= rows)
+        {
+            return false;
+        }
+
+        for (int c = 0; c < columns; c++)
+        {
+            data[to][c] += data[from][c] * num;
+        }
+
+        return true;
+    }
+
+    public boolean row_operate_add(int from, int to)
+    {
+        return this.row_operate_add(from, to, 1);
+    }
 }
 
 class JavaMain
@@ -259,5 +313,12 @@ class JavaMain
                 m1.getRemainingMatrix(r, c).show();
             }
         }
+
+        m = new Matrix(rows, columns, true);
+        m.show();
+        int i = 0, j = rows - 1;
+        System.out.println("Swaping " + i + " with " + j);
+        m.row_operate_swap(i, j);
+        m.show();
     }
 }
