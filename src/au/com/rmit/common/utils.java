@@ -5,6 +5,9 @@
  */
 package au.com.rmit.common;
 
+import java.time.LocalDate;
+import java.time.temporal.TemporalAdjusters;
+
 /**
  *
  * @author ricolwang
@@ -12,4 +15,16 @@ package au.com.rmit.common;
 public class utils
 {
 
+}
+
+class JavaMain
+{
+
+    public static void main(String[] args)
+    {
+        LocalDate today = LocalDate.now();
+        System.out.println(today);
+        LocalDate payday = today.with(TemporalAdjusters.lastDayOfMonth()).minusDays(2);
+        System.out.println(payday);
+    }
 }

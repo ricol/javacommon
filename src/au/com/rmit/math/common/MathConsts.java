@@ -12,5 +12,5 @@ package au.com.rmit.math.common;
 public class MathConsts
 {
 
-    public static double E = 0.001;
+    public static double Minimum = 0.001;
 }

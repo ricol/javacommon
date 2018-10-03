@@ -39,7 +39,7 @@ public class Point3D
         if (obj instanceof Point3D)
         {
             Point3D B = (Point3D) obj;
-            return abs(this.x - B.x) <= MathConsts.E && abs(this.y - B.y) <= MathConsts.E && abs(this.z - B.z) <= MathConsts.E;
+            return abs(this.x - B.x) <= MathConsts.Minimum && abs(this.y - B.y) <= MathConsts.Minimum && abs(this.z - B.z) <= MathConsts.Minimum;
         } else
         {
             return false;
