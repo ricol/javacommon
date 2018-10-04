@@ -327,7 +327,7 @@ public class Matrix
             Matrix sub = m.getSubMatrix(r, rows - 1, c, columns - 1);
             Matrix normalize = sub.getNormalizeMatrix();
             m.updateSubMatrix(r, c, normalize);
-            
+
             r += 1;
             c += 1;
         }
@@ -444,6 +444,41 @@ public class Matrix
 
         return true;
     }
+    
+    public String getLinearFunctions(Matrix value)
+    {
+        if (value.rows != rows || value.columns != 1) return "";
+        
+        String s = "";
+        for (int r = 0; r < rows; r++)
+        {
+            for (int c = 0; c < columns; c++)
+            {
+                s += String.format("%.2fx%d", data[r][c], c + 1);
+                if (c < columns - 1) s += " + ";
+            }
+            s += String.format(" = %.2f", value.getValue(r, 0));
+            s += "\n";
+        }
+        return s;
+    }
+    
+    public Matrix solveLinearyFunctions(Matrix value)
+    {
+        Matrix m = new Matrix(rows, 1);
+        
+        double v = this.calculate();
+        int r = 0;
+        for (int c = 0; c < columns; c++)
+        {
+            Matrix m1 = this.getCopy();
+            m1.updateSubMatrix(0, c, value);
+            m.update(r, 0, m1.calculate() / v);
+            r++;
+        }
+        
+        return m;
+    }
 }
 
 class JavaMain
@@ -487,5 +522,23 @@ class JavaMain
         Matrix normalized = m.getFullNormalizationMatrix();
         normalized.show();
         System.out.println("validating..." + (normalized.isSimplified() ? "ok" : "error!"));
+
+        rows = 10;
+        columns = rows;
+        Matrix d = new Matrix(rows, columns, true, true);
+        System.out.print("Matrix: ");
+        d.show();
+        System.out.println("Value: " + d.calculate());
+        
+        Matrix v = new Matrix(rows, 1, true, true);
+        System.out.println("Value Matrix: ");
+        v.show();
+        
+        System.out.println("Linear functions...");
+        System.out.println(d.getLinearFunctions(v));
+        
+        System.out.println("Solve linear functions...");
+        Matrix s = d.solveLinearyFunctions(v);
+        s.show();
     }
 }
