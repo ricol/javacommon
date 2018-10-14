@@ -5,9 +5,6 @@
  */
 package au.com.rmit.math.geometry;
 
-import java.awt.Color;
-import java.awt.Graphics2D;
-
 /**
  *
  * @author ricolwang
@@ -62,16 +59,6 @@ public class CircleShape extends ClosureShape
         {
             return false;
         }
-    }
-
-    @Override
-    public void draw(Graphics2D theGraphicsInTheScene, Color theColor)
-    {
-        int tmpRadius = (int) radius;
-        int tmpX = (int) (centre.x - tmpRadius);
-        int tmpY = (int) (centre.y - tmpRadius);
-        theGraphicsInTheScene.setColor(theColor);
-        theGraphicsInTheScene.drawArc(tmpX, tmpY, 2 * tmpRadius, 2 * tmpRadius, 0, 360);
     }
 
     @Override

@@ -6,8 +6,6 @@
 package au.com.rmit.math.geometry;
 
 import au.com.rmit.math.vector.Vector;
-import java.awt.Color;
-import java.awt.Graphics2D;
 import java.util.ArrayList;
 
 /**
@@ -47,15 +45,6 @@ public class Line extends Shape
     public double getLength()
     {
         return start.getDistanceFrom(end);
-    }
-
-    @Override
-    public void draw(Graphics2D theGraphicsInTheScene, Color theColor)
-    {
-        super.draw(theGraphicsInTheScene, theColor); //To change body of generated methods, choose Tools | Templates.
-
-        theGraphicsInTheScene.setColor(theColor);
-        theGraphicsInTheScene.drawLine((int) start.x, (int) start.y, (int) end.x, (int) end.y);
     }
 
     public ArrayList<Line> getSpecialLinesClockwise(double distance)

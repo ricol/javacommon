@@ -5,9 +5,6 @@
  */
 package au.com.rmit.math.geometry;
 
-import java.awt.Color;
-import java.awt.Graphics2D;
-
 /**
  *
  * @author ricolwang
@@ -38,13 +35,6 @@ public class SpecialRectangleShape extends ClosureShape
         {
             return false;
         }
-    }
-
-    @Override
-    public void draw(Graphics2D theGraphicsInTheScene, Color theColor)
-    {
-        theGraphicsInTheScene.setColor(theColor);
-        theGraphicsInTheScene.drawRect((int) this.left, (int) this.top, (int) width - 1, (int) height - 1);
     }
 
     @Override

@@ -15,12 +15,12 @@ import java.util.Random;
 public class Matrix
 {
 
-    private double[][] data =
+    protected double[][] data =
     {
     };
     int rows = 0;
     int columns = 0;
-    private final Random theRandom = new Random();
+    protected final Random theRandom = new Random();
 
     public Matrix(int rows, int columns, boolean random)
     {
@@ -85,6 +85,21 @@ public class Matrix
             }
             System.out.println();
         }
+    }
+
+    public Matrix getCalculateForm()
+    {
+        Matrix m = this.getCopy();
+
+        for (int r = 0; r < rows; r++)
+        {
+            for (int c = 0; c < columns; c++)
+            {
+                m.update(r, c, data[r][c] * Math.pow(-1, r + c)); 
+            }
+        }
+
+        return m;
     }
 
     public double calculate()
@@ -159,6 +174,36 @@ public class Matrix
         }
 
         return n;
+    }
+
+    public Matrix times(double num)
+    {
+        Matrix m = this.getCopy();
+
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j < columns; j++)
+            {
+                m.update(i, j, data[i][j] * num);
+            }
+        }
+
+        return m;
+    }
+
+    public boolean isSame(Matrix m)
+    {
+        if (m.rows != rows || m.columns != columns) return false;
+
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j < columns; j++)
+            {
+                if ((Math.abs(data[i][j]) - m.getValue(i, j)) > MathConsts.Minimum) return false;
+            }
+        }
+
+        return true;
     }
 
     public Matrix multiply(Matrix m)
@@ -278,6 +323,17 @@ public class Matrix
         }
 
         return m;
+    }
+
+    public void apply(double value)
+    {
+        for (int r = 0; r < rows; r++)
+        {
+            for (int c = 0; c < columns; c++)
+            {
+                this.update(r, c, value);
+            }
+        }
     }
 
     public boolean row_operate_add(int from, int to)
@@ -444,11 +500,11 @@ public class Matrix
 
         return true;
     }
-    
+
     public String getLinearFunctions(Matrix value)
     {
         if (value.rows != rows || value.columns != 1) return "";
-        
+
         String s = "";
         for (int r = 0; r < rows; r++)
         {
@@ -462,11 +518,11 @@ public class Matrix
         }
         return s;
     }
-    
+
     public Matrix solveLinearyFunctions(Matrix value)
     {
         Matrix m = new Matrix(rows, 1);
-        
+
         double v = this.calculate();
         int r = 0;
         for (int c = 0; c < columns; c++)
@@ -476,13 +532,9 @@ public class Matrix
             m.update(r, 0, m1.calculate() / v);
             r++;
         }
-        
+
         return m;
     }
-}
-
-class JavaMain
-{
 
     public static void main(String[] args)
     {
@@ -529,16 +581,25 @@ class JavaMain
         System.out.print("Matrix: ");
         d.show();
         System.out.println("Value: " + d.calculate());
-        
+
         Matrix v = new Matrix(rows, 1, true, true);
         System.out.println("Value Matrix: ");
         v.show();
-        
+
         System.out.println("Linear functions...");
         System.out.println(d.getLinearFunctions(v));
-        
+
         System.out.println("Solve linear functions...");
         Matrix s = d.solveLinearyFunctions(v);
         s.show();
+
+        Matrix a = new Matrix(5, 6, true, true);
+        a.show();
+        Matrix b = new Matrix(6, 7, true, true);
+        b.show();
+        Matrix c = a.multiply(b);
+        c.show();
+        c.getRevertMatrix().show();
+        b.getRevertMatrix().multiply(a.getRevertMatrix()).show();
     }
 }

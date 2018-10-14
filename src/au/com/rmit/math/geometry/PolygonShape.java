@@ -5,8 +5,6 @@
  */
 package au.com.rmit.math.geometry;
 
-import java.awt.Color;
-import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.Set;
 
@@ -17,7 +15,7 @@ import java.util.Set;
 public class PolygonShape extends ClosureShape
 {
 
-    ArrayList<Line> sides = new ArrayList<>();
+    protected ArrayList<Line> sides = new ArrayList<>();
 
     public PolygonShape()
     {
@@ -86,17 +84,6 @@ public class PolygonShape extends ClosureShape
         for (Line aLine : this.sides)
         {
             aLine.refresh(changeX, changeY, changeWidth, changeHeight);
-        }
-    }
-
-    @Override
-    public void draw(Graphics2D theGraphicsInTheScene, Color theColor)
-    {
-        super.draw(theGraphicsInTheScene, theColor);
-
-        for (Line aLine : this.sides)
-        {
-            aLine.draw(theGraphicsInTheScene, theColor);
         }
     }
 

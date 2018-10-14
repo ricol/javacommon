@@ -17,14 +17,16 @@ package au.com.rmit.graphics.stddraw;
  *
  ************************************************************************
  */
+import au.com.rmit.math.linearalgebra.Matrix;
+import au.com.rmit.math.linearalgebra.Square;
+import java.awt.*;
+import java.awt.event.*;
+import java.awt.geom.*;
+import java.awt.image.*;
 import java.io.*;
 import java.net.*;
-import java.awt.*;
-import java.awt.geom.*;
-import java.awt.event.*;
-import java.awt.image.*;
-import javax.swing.*;
 import javax.imageio.ImageIO;
+import javax.swing.*;
 
 /**
  * <i>Standard draw</i>. Our class StdDraw provides a basic capability for creating drawings with your programs. It uses a simple graphics model that allows you to create drawings consisting of points, lines, and curves in a window on your computer and to save the drawings to a file.
@@ -943,38 +945,84 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
     {
     }
 
-    /**
-     * @deprecated
-     */
-    // test client
+    public static void drawTo(double x, double y)
+    {
+        StdDraw.line(StdDraw.xmin, StdDraw.ymin, x, y);
+        StdDraw.filledCircle(x, y, 0.01);
+    }
+
+    public static void drawBorder()
+    {
+        StdDraw.setPenRadius(0.01);
+        StdDraw.line(StdDraw.xmin, StdDraw.ymin, StdDraw.xmin, StdDraw.ymax);
+        StdDraw.line(StdDraw.xmin, StdDraw.ymax, StdDraw.xmax, StdDraw.ymax);
+        StdDraw.line(StdDraw.xmax, StdDraw.ymin, StdDraw.xmax, StdDraw.ymax);
+        StdDraw.line(StdDraw.xmin, StdDraw.ymin, StdDraw.xmax, StdDraw.ymin);
+        StdDraw.setPenRadius();
+    }
+
     public static void main(String[] args)
     {
-        StdDraw.square(.2, .8, .1);
-        StdDraw.filledSquare(.8, .8, .2);
-        StdDraw.circle(.8, .2, .2);
+//        StdDraw.square(.2, .8, .1);
+//        StdDraw.filledSquare(.8, .8, .2);
+//        StdDraw.circle(.8, .2, .2);
+//
+//        StdDraw.setPenColor(StdDraw.MAGENTA);
+//        StdDraw.setPenRadius(.02);
+//        StdDraw.arc(.8, .2, .1, 200, 45);
+//
+//        // draw a blue diamond
+//        StdDraw.setPenRadius();
+//        StdDraw.setPenColor(StdDraw.BLUE);
+//        double[] x =
+//        {
+//            .1, .2, .3, .2
+//        };
+//        double[] y =
+//        {
+//            .2, .3, .2, .1
+//        };
+//        StdDraw.filledPolygon(x, y);
+//
+//        // text
+//        StdDraw.setPenColor(StdDraw.BLACK);
+//        StdDraw.text(0.2, 0.5, "black text");
+//        StdDraw.setPenColor(StdDraw.WHITE);
+//        StdDraw.text(0.7, 0.8, "white text");
 
-        StdDraw.setPenColor(StdDraw.MAGENTA);
-        StdDraw.setPenRadius(.02);
-        StdDraw.arc(.8, .2, .1, 200, 45);
-
-        // draw a blue diamond
-        StdDraw.setPenRadius();
+//        StdDraw.setPenColor();
+        StdDraw.drawBorder();
         StdDraw.setPenColor(StdDraw.BLUE);
-        double[] x =
-        {
-            .1, .2, .3, .2
-        };
-        double[] y =
-        {
-            .2, .3, .2, .1
-        };
-        StdDraw.filledPolygon(x, y);
+        double x1 = 0.9, y1 = StdDraw.ymin;
+        Point p = new Point((int) x1, (int) y1);
+        StdDraw.drawTo(x1, y1);
 
-        // text
-        StdDraw.setPenColor(StdDraw.BLACK);
-        StdDraw.text(0.2, 0.5, "black text");
-        StdDraw.setPenColor(StdDraw.WHITE);
-        StdDraw.text(0.7, 0.8, "white text");
+        double angle = Math.PI / 100;
+
+        Matrix transfer = new Matrix(2, 2);
+        transfer.update(0, 0, Math.cos(angle));
+        transfer.update(0, 1, -Math.sin(angle));
+        transfer.update(1, 0, Math.sin(angle));
+        transfer.update(1, 1, Math.cos(angle));
+        transfer.show();
+
+        Matrix unit = Square.getTheUnitMatrix(2);
+        unit.show();
+
+//        transfer = unit;
+        for (int i = 0; i < 50; i++)
+        {
+            Matrix current = new Matrix(2, 1);
+            current.update(0, 0, x1);
+            current.update(1, 0, y1);
+            current.show();
+
+            Matrix r = transfer.multiply(current);
+            r.show();
+            x1 = r.getValue(0, 0);
+            y1 = r.getValue(1, 0);
+            StdDraw.drawTo(x1, y1);
+        }
     }
 
 }

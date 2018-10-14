@@ -6,8 +6,6 @@
 package au.com.rmit.math.geometry;
 
 import au.com.rmit.math.common.MathConsts;
-import java.awt.Color;
-import java.awt.Graphics2D;
 import static java.lang.Math.abs;
 import static java.lang.Math.sqrt;
 
@@ -31,15 +29,6 @@ public class Point extends Shape
         double delX = B.x - x;
         double delY = B.y - y;
         return sqrt(delX * delX + delY * delY);
-    }
-
-    @Override
-    public void draw(Graphics2D theGraphicsInTheScene, Color theColor)
-    {
-        super.draw(theGraphicsInTheScene, theColor); //To change body of generated methods, choose Tools | Templates.
-
-        theGraphicsInTheScene.setColor(theColor);
-        theGraphicsInTheScene.fillArc((int) x, (int) y, 2, 2, 0, 360);
     }
 
     @Override

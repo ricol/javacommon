@@ -5,8 +5,6 @@
  */
 package au.com.rmit.math.geometry;
 
-import java.awt.Color;
-import java.awt.Graphics2D;
 import static java.lang.Math.abs;
 import java.util.ArrayList;
 
@@ -29,11 +27,6 @@ public class Shape
     }
 
     public void refresh(double changeX, double changeY, double changeWidth, double changeHeight)
-    {
-
-    }
-
-    public void draw(Graphics2D theGraphicsInTheScene, Color theColor)
     {
 
     }
