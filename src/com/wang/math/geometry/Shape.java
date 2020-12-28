@@ -31,7 +31,7 @@ public class Shape
 
     }
 
-    public static boolean CircleCollideWithCircle(CircleShape A, CircleShape B)
+    public static boolean CircleCollideWithCircle(CircledShape A, CircledShape B)
     {
         double delX = A.centre.x - B.centre.x;
         double delY = A.centre.y - B.centre.y;
@@ -41,7 +41,7 @@ public class Shape
         return distance < targetRadius + thisRadius;
     }
 
-    public static ArrayList<Point> getCollidePoints(CircleShape A, CircleShape B)
+    public static ArrayList<Point> getCollidePoints(CircledShape A, CircledShape B)
     {
         ArrayList<Point> points = new ArrayList<>();
 
@@ -63,13 +63,13 @@ public class Shape
         return points;
     }
 
-    public static boolean CircleCollideWithRectangle(CircleShape A, SpecialRectangleShape B)
+    public static boolean CircleCollideWithRectangle(CircledShape A, SpecialRectangleShape B)
     {
         CircleRectangleCollideDirection theDirection = Shape.CircleCollideWithRectangleFromDirection(A, B);
         return theDirection != CircleRectangleCollideDirection.NO;
     }
 
-    public static CircleRectangleCollideDirection CircleCollideWithRectangleFromDirection(CircleShape A, SpecialRectangleShape B)
+    public static CircleRectangleCollideDirection CircleCollideWithRectangleFromDirection(CircledShape A, SpecialRectangleShape B)
     {
         double a = A.centre.x;
         double b = A.centre.y;
@@ -118,7 +118,7 @@ public class Shape
         return CircleRectangleCollideDirection.NO;
     }
 
-    public static boolean RectangleCollideWithCircle(SpecialRectangleShape A, CircleShape B)
+    public static boolean RectangleCollideWithCircle(SpecialRectangleShape A, CircledShape B)
     {
         return CircleCollideWithRectangle(B, A);
     }

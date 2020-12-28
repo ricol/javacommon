@@ -12,7 +12,7 @@ import java.util.Set;
  *
  * @author ricolwang
  */
-public class PolygonShape extends ClosureShape
+public class PolygonShape extends ConfinedShape
 {
 
     protected ArrayList<Line> sides = new ArrayList<>();
@@ -48,13 +48,13 @@ public class PolygonShape extends ClosureShape
     }
 
     @Override
-    public boolean intersect(ClosureShape theTarget)
+    public boolean intersect(ConfinedShape theTarget)
     {
         return false;
     }
 
     @Override
-    public boolean contain(ClosureShape theTarget)
+    public boolean contain(ConfinedShape theTarget)
     {
         return false;
     }

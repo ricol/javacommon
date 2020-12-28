@@ -9,15 +9,15 @@ package com.wang.math.geometry;
  *
  * @author ricolwang
  */
-public class ClosureShape extends Shape
+public class ConfinedShape extends Shape
 {
 
-    public boolean intersect(ClosureShape theTarget)
+    public boolean intersect(ConfinedShape theTarget)
     {
         return false;
     }
 
-    public boolean contain(ClosureShape theTarget)
+    public boolean contain(ConfinedShape theTarget)
     {
         return false;
     }
@@ -32,7 +32,7 @@ public class ClosureShape extends Shape
         return 0;
     }
 
-    public boolean collideWith(ClosureShape theShape)
+    public boolean collideWith(ConfinedShape theShape)
     {
         return false;
     }

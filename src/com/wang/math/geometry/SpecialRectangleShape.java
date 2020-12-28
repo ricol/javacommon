@@ -9,7 +9,7 @@ package com.wang.math.geometry;
  *
  * @author ricolwang
  */
-public class SpecialRectangleShape extends ClosureShape
+public class SpecialRectangleShape extends ConfinedShape
 {
 
     public double left, top, width, height;
@@ -23,11 +23,11 @@ public class SpecialRectangleShape extends ClosureShape
     }
 
     @Override
-    public boolean collideWith(ClosureShape theShape)
+    public boolean collideWith(ConfinedShape theShape)
     {
-        if (theShape instanceof CircleShape)
+        if (theShape instanceof CircledShape)
         {
-            return Shape.RectangleCollideWithCircle(this, (CircleShape) theShape);
+            return Shape.RectangleCollideWithCircle(this, (CircledShape) theShape);
         } else if (theShape instanceof SpecialRectangleShape)
         {
             return Shape.RectangleCollideWithRectangle(this, (SpecialRectangleShape) theShape);

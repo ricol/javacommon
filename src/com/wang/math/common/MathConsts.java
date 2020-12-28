@@ -11,6 +11,5 @@ package com.wang.math.common;
  */
 public class MathConsts
 {
-
-    public static double Minimum = 0.001;
+    public static double Minimum = 1e-3;
 }

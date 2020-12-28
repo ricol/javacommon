@@ -9,13 +9,13 @@ package com.wang.math.geometry;
  *
  * @author ricolwang
  */
-public class CircleShape extends ClosureShape
+public class CircledShape extends ConfinedShape
 {
 
     public Point centre = new Point(0, 0);
     public double radius;
 
-    public CircleShape(double centreX, double centreY, double radius)
+    public CircledShape(double centreX, double centreY, double radius)
     {
         this.centre.x = centreX;
         this.centre.y = centreY;
@@ -23,13 +23,13 @@ public class CircleShape extends ClosureShape
     }
 
     @Override
-    public boolean intersect(ClosureShape theTarget)
+    public boolean intersect(ConfinedShape theTarget)
     {
         return false;
     }
 
     @Override
-    public boolean contain(ClosureShape theTarget)
+    public boolean contain(ConfinedShape theTarget)
     {
         return false;
     }
@@ -47,11 +47,11 @@ public class CircleShape extends ClosureShape
     }
 
     @Override
-    public boolean collideWith(ClosureShape theShape)
+    public boolean collideWith(ConfinedShape theShape)
     {
-        if (theShape instanceof CircleShape)
+        if (theShape instanceof CircledShape)
         {
-            return Shape.CircleCollideWithCircle(this, (CircleShape) theShape);
+            return Shape.CircleCollideWithCircle(this, (CircledShape) theShape);
         } else if (theShape instanceof SpecialRectangleShape)
         {
             return Shape.CircleCollideWithRectangle(this, (SpecialRectangleShape) theShape);
