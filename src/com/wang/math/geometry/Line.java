@@ -6,10 +6,10 @@
 package com.wang.math.geometry;
 
 import com.wang.math.vector.Vector;
+
 import java.util.ArrayList;
 
 /**
- *
  * @author ricolwang
  */
 public class Line extends Shape

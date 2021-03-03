@@ -5,11 +5,11 @@
  */
 package com.wang.math.geometry;
 
-import static java.lang.Math.abs;
 import java.util.ArrayList;
 
+import static java.lang.Math.abs;
+
 /**
- *
  * @author ricolwang
  */
 public class Shape
@@ -19,7 +19,9 @@ public class Shape
     {
 
         FROM_TOP, FROM_LEFT, FROM_BOTTOM, FROM_RIGHT, FROM_INSIDE, FROM_OUTSIDE, FROM_TOP_LEFT, FROM_BOTTOM_LEFT, FROM_BOTTOM_RIGHT, FROM_TOP_RIGHT, NO
-    };
+    }
+
+    ;
 
     public void print(String text)
     {

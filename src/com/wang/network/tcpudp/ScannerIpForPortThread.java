@@ -16,7 +16,7 @@ public class ScannerIpForPortThread extends Thread
     IScanDelegate scanDelegate;
 
     public ScannerIpForPortThread(int port, int ipStart, int ipEnd,
-            int timeout, IScanDelegate scanDelegate)
+                                  int timeout, IScanDelegate scanDelegate)
     {
         this.port = port;
         this.ipStart = ipStart;

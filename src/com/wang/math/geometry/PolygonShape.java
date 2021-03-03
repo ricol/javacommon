@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.Set;
 
 /**
- *
  * @author ricolwang
  */
 public class PolygonShape extends ConfinedShape

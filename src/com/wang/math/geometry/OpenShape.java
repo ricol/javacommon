@@ -6,7 +6,6 @@
 package com.wang.math.geometry;
 
 /**
- *
  * @author ricolwang
  */
 public class OpenShape extends Shape

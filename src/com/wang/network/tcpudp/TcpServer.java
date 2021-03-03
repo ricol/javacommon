@@ -123,7 +123,7 @@ public class TcpServer extends BasicNet implements IServerTCP
         int port;
 
         public ServerThread(ServerSocket ServerSocket, int port,
-                ICommunicationThreadDelegate communicationThreadDelegate)
+                            ICommunicationThreadDelegate communicationThreadDelegate)
         {
             this.port = port;
             this.communicationThreadDelegate = communicationThreadDelegate;

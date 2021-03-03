@@ -8,25 +8,30 @@ package com.wang.graphics.stddraw;
 /**
  * ***********************************************************************
  * Compilation: javac StdDraw.java Execution: java StdDraw
- *
+ * <p>
  * Standard graphics library. Todo ---- - Add support for gradient fill, etc.
- *
+ * <p>
  * Remarks ------- - don't use AffineTransform for rescaling since it inverts images and strings - careful using setFont in inner loop within an animation - it can cause flicker
- *
+ * <p>
  * To generate javadoc ------------------- javadoc -nodeprecated -nodeprecatedlist -notree -noindex -nohelp -nonavbar StdDraw.java
- *
- ************************************************************************
+ * <p>
+ * ***********************************************************************
  */
+
 import com.wang.math.linearalgebra.Matrix;
 import com.wang.math.linearalgebra.Square;
+
+import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.geom.*;
-import java.awt.image.*;
-import java.io.*;
-import java.net.*;
-import javax.imageio.ImageIO;
-import javax.swing.*;
+import java.awt.image.BufferedImage;
+import java.awt.image.DirectColorModel;
+import java.awt.image.WritableRaster;
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
 
 /**
  * <i>Standard draw</i>. Our class StdDraw provides a basic capability for creating drawings with your programs. It uses a simple graphics model that allows you to create drawings consisting of points, lines, and curves in a window on your computer and to save the drawings to a file.
@@ -612,7 +617,8 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
                 icon = new ImageIcon(url);
             } catch (Exception e)
             {
-                /* not a url */ }
+                /* not a url */
+            }
         }
 
         // in case file is inside a .jar
@@ -770,9 +776,9 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
             WritableRaster raster = offscreenImage.getRaster();
             WritableRaster newRaster;
             newRaster = raster.createWritableChild(0, 0, width, height, 0, 0, new int[]
-            {
-                0, 1, 2
-            });
+                    {
+                            0, 1, 2
+                    });
             DirectColorModel cm = (DirectColorModel) offscreenImage.getColorModel();
             DirectColorModel newCM = new DirectColorModel(cm.getPixelSize(),
                     cm.getRedMask(),

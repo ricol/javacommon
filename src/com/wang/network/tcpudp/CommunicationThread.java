@@ -1,11 +1,6 @@
 package com.wang.network.tcpudp;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.Socket;
 
 public abstract class CommunicationThread extends Thread
@@ -19,7 +14,7 @@ public abstract class CommunicationThread extends Thread
     ICommunicationThreadDelegate communicationThreadDelegate;
 
     public CommunicationThread(Socket aClient,
-            ICommunicationThreadDelegate communicationThreadDelegate)
+                               ICommunicationThreadDelegate communicationThreadDelegate)
     {
         // TODO Auto-generated constructor stub
         this.communicationThreadDelegate = communicationThreadDelegate;

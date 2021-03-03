@@ -8,7 +8,6 @@ package com.wang.network.tcpudp;
 import java.net.Socket;
 
 /**
- *
  * @author ricolwang
  */
 public class ServerCommunicationThread extends CommunicationThread
@@ -20,8 +19,8 @@ public class ServerCommunicationThread extends CommunicationThread
     public final static String DEFAULT_WELCOME_MSG = "Welcome!";
 
     public ServerCommunicationThread(Socket aClient, String welcomeMsg,
-            IServerDelegate serverdelegate,
-            ICommunicationThreadDelegate communicationThreadDelegate)
+                                     IServerDelegate serverdelegate,
+                                     ICommunicationThreadDelegate communicationThreadDelegate)
     {
         super(aClient, communicationThreadDelegate);
         this.welcomeMsg = welcomeMsg;

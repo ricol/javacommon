@@ -6,18 +6,18 @@
 package com.wang.math.linearalgebra;
 
 import com.wang.math.common.MathConsts;
+
 import java.util.Random;
 
 /**
- *
  * @author ricolwang
  */
 public class Matrix
 {
 
     protected double[][] data =
-    {
-    };
+            {
+            };
     int rows = 0;
     int columns = 0;
     protected final Random theRandom = new Random();
@@ -95,7 +95,7 @@ public class Matrix
         {
             for (int c = 0; c < columns; c++)
             {
-                m.update(r, c, data[r][c] * Math.pow(-1, r + c)); 
+                m.update(r, c, data[r][c] * Math.pow(-1, r + c));
             }
         }
 

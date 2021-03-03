@@ -17,7 +17,7 @@ public class BasicNet implements IScanTCP, ICommunicationThreadDelegate
 
     @Override
     public void startScaningIpForPort(int port, int ipStart, int ipEnd,
-            int timeout)
+                                      int timeout)
     {
         this.stopScaningIpForPort();
 
@@ -65,7 +65,7 @@ public class BasicNet implements IScanTCP, ICommunicationThreadDelegate
 
     @Override
     public void startScanningPortForIp(String ip, int timeout, int startPort,
-            int endPort)
+                                       int endPort)
     {
         // TODO Auto-generated method stub
         this.stopScanningPortForIp();

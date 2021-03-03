@@ -1,7 +1,6 @@
 package com.wang.common;
 
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.*;
 
 public class JavaTheme
 {

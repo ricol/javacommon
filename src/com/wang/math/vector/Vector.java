@@ -5,14 +5,15 @@
  */
 package com.wang.math.vector;
 
-import com.wang.math.geometry.Point;
 import com.wang.math.common.MathConsts;
 import com.wang.math.equation.QuadraticEquation;
-import static java.lang.Math.abs;
+import com.wang.math.geometry.Point;
+
 import java.util.ArrayList;
 
+import static java.lang.Math.abs;
+
 /**
- *
  * @author ricolwang
  */
 public class Vector

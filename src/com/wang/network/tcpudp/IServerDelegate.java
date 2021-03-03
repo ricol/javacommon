@@ -6,14 +6,13 @@
 package com.wang.network.tcpudp;
 
 /**
- *
  * @author ricolwang
  */
 public interface IServerDelegate extends IConnectionDelegate
 {
 
     public void ServerDelegateClientMessageReceived(String msg,
-            String clientAddress, int clientPort);
+                                                    String clientAddress, int clientPort);
 
     public void ServerDelegateStartListening(int port);
 

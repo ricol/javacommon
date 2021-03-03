@@ -8,7 +8,6 @@ package com.wang.network.tcpudp;
 import java.net.Socket;
 
 /**
- *
  * @author ricolwang
  */
 public class ClientCommunicationThread extends CommunicationThread
@@ -17,8 +16,8 @@ public class ClientCommunicationThread extends CommunicationThread
     IClientDelegate theClientDelegate;
 
     public ClientCommunicationThread(Socket aClient,
-            IClientDelegate clientDelegate,
-            ICommunicationThreadDelegate communicationThreadDelegate)
+                                     IClientDelegate clientDelegate,
+                                     ICommunicationThreadDelegate communicationThreadDelegate)
     {
         super(aClient, communicationThreadDelegate);
 

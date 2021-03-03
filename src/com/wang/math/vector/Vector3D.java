@@ -8,7 +8,6 @@ package com.wang.math.vector;
 import com.wang.math.geometry.Point3D;
 
 /**
- *
  * @author ricolwang
  */
 public class Vector3D

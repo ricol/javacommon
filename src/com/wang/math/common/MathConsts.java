@@ -6,7 +6,6 @@
 package com.wang.math.common;
 
 /**
- *
  * @author ricolwang
  */
 public class MathConsts

@@ -6,7 +6,6 @@
 package com.wang.math.linearalgebra;
 
 /**
- *
  * @author ricolwang
  */
 public class Square extends Matrix
@@ -110,7 +109,7 @@ public class Square extends Matrix
         inverse.show();
         System.out.print("Validate: ");
         System.out.println(m.multiply(inverse).isSame(inverse.multiply(m)) ? " OK " : "Error!");
-        
+
         Square a = new Square(size, true);
         Square b = new Square(size, true);
         System.out.println("A =");

@@ -6,7 +6,6 @@
 package com.wang.network.tcpudp;
 
 /**
- *
  * @author ricolwang
  */
 public interface IConnectionDelegate

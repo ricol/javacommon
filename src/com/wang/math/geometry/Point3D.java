@@ -6,11 +6,11 @@
 package com.wang.math.geometry;
 
 import com.wang.math.common.MathConsts;
+
 import static java.lang.Math.abs;
 import static java.lang.Math.sqrt;
 
 /**
- *
  * @author ricolwang
  */
 public class Point3D

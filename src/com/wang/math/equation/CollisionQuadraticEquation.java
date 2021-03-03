@@ -6,7 +6,6 @@
 package com.wang.math.equation;
 
 /**
- *
  * @author ricolwang
  */
 public class CollisionQuadraticEquation extends QuadraticEquation

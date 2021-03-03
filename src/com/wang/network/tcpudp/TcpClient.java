@@ -117,7 +117,7 @@ public class TcpClient extends BasicNet implements IClientTCP
         int port;
 
         public ClientThread(String serverAddress, int port,
-                ICommunicationThreadDelegate communicationThreadDelegate)
+                            ICommunicationThreadDelegate communicationThreadDelegate)
         {
             this.serverAddress = serverAddress;
             this.port = port;
