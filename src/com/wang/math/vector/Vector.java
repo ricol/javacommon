@@ -36,8 +36,7 @@ public class Vector
 
     public Point getTheEndPoint()
     {
-        Point aPoint = new Point(x + start.x, y + start.y);
-        return aPoint;
+        return new Point(x + start.x, y + start.y);
     }
 
     public Vector addVector(Vector B)
@@ -58,8 +57,7 @@ public class Vector
 
     public Vector getTheNegativeVector()
     {
-        Vector C = new Vector(-x, -y);
-        return C;
+        return new Vector(-x, -y);
     }
 
     public double dotProduct(Vector B)
@@ -74,8 +72,7 @@ public class Vector
 
     public Vector multiplyNumber(double number)
     {
-        Vector C = new Vector(x * number, y * number);
-        return C;
+        return new Vector(x * number, y * number);
     }
 
     public Vector getPerpendicularUnitVectorCounterClockwise()
@@ -106,8 +103,7 @@ public class Vector
         }
 
         double tmp = -1 * (x / Math.sqrt(x * x + y * y));
-        Vector C = new Vector(-1 * (y / x) * tmp, tmp);
-        return C;
+        return new Vector(-1 * (y / x) * tmp, tmp);
     }
 
     public Vector getPerpendicularUnitVectorClockwise()
@@ -138,8 +134,7 @@ public class Vector
         }
 
         double tmp = x / Math.sqrt(x * x + y * y);
-        Vector C = new Vector(-1 * (y / x) * tmp, tmp);
-        return C;
+        return new Vector(-1 * (y / x) * tmp, tmp);
     }
 
     public boolean isPerpendicularTo(Vector B)
@@ -148,7 +143,7 @@ public class Vector
         return abs(dot) <= MathConsts.Minimum;
     }
 
-    public boolean isParalleTo(Vector B)
+    public boolean isParallelTo(Vector B)
     {
         double dot = this.dotProduct(B);
         double absThis = this.getTheMagnitude();
@@ -176,8 +171,7 @@ public class Vector
 
     public Vector3D getCrossProduct(Vector B)
     {
-        Vector3D Result = new Vector3D(0, 0, this.x * B.y - this.y * B.x);
-        return Result;
+        return new Vector3D(0, 0, this.x * B.y - this.y * B.x);
     }
 
     //magnitude != 0
